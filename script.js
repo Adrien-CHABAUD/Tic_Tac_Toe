@@ -45,14 +45,14 @@ function handleResultValidation(){
 	let roundWon = false;
 	for(let i = 0; i <= 7; i++){
 		const winningCondition = winningConditions[i];
-		let a = gameState[winningConditions[0]];
-		let b = gameState[winningConditions[1]];
-		let c = gameState[winningConditions[2]];
+		let a = gameState[winningCondition[0]];
+		let b = gameState[winningCondition[1]];
+		let c = gameState[winningCondition[2]];
 
 		if(a == '' || b == '' || c == ''){
 			continue;
 		}
-		if(a == '' && b == ''){
+		if(a == b && b == c){
 			roundWon = true;
 			break
 		}
