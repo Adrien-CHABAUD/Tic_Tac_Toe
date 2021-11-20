@@ -18,8 +18,9 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 // Set initial message to let players know whose turn it is
 statusDisplay.innerHTML = currentPlayerTurn();
-function handleCellPlayed(){
+function handleCellPlayed(clickedCell, clickedCellIndex){
 	// TO-DO
+	console.log(clickedCellIndex)
 }
 
 function handlePlayerChange(){
@@ -30,9 +31,23 @@ function handleResultValidation(){
 	// TO-DO
 }
 
-function handleCellClick(){
-	// TO-DO
-	console.log("Cell Clicked")
+function handleCellClick(clickedCellEvent){
+	// Save the clicked html element
+	const clickedCell = clickedCellEvent.target;
+
+	// Grab the 'data-cell-index' attribute
+	const clickedCellIndex = parseInt(
+		clickedCell.getAttribute('data-cell-index')
+	); 
+
+	// Check if the call already has been played or if the game is paused
+	if(gameState[clickedCellIndex] !== "" || !gameActive){
+		return;
+	}
+
+	// If anything is in order proceed the game flow
+	handleCellPlayed(clickedCell, clickedCellIndex);
+	handleResultValidation();
 }
 
 function handleRestartGame(){
