@@ -61,6 +61,17 @@ function handleResultValidation(){
 		gameActive = false;
 		return;
 	}
+
+	// Check if some values are not populated in the gameState
+	let roundDraw = !gameState.includes("");
+    if (roundDraw) {
+        statusDisplay.innerHTML = drawMessage();
+        gameActive = false;
+        return;
+    }
+
+    // No one won, still moves to be done
+    handlePlayerChange();
 	
 }
 
