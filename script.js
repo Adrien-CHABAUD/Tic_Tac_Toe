@@ -41,7 +41,27 @@ const winningConditions = [
 ];
 
 function handleResultValidation(){
-	// TO-DO
+	let roundWon = false;
+	for(let i = 0; i <= 7; i++){
+		const winningCondition = winningConditions[i];
+		let a = gameState[winningConditions[0]];
+		let b = gameState[winningConditions[1]];
+		let c = gameState[winningConditions[2]];
+
+		if(a == '' || b == '' || c == ''){
+			continue;
+		}
+		if(a == '' && b == ''){
+			roundWon = true;
+			break
+		}
+	}
+	if(roundWon){
+		statusDisplay.innerHTML = winningMessage();
+		gameActive = false;
+		return;
+	}
+	
 }
 
 function handleCellClick(clickedCellEvent){
