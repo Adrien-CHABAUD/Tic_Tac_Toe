@@ -18,14 +18,27 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 // Set initial message to let players know whose turn it is
 statusDisplay.innerHTML = currentPlayerTurn();
+
 function handleCellPlayed(clickedCell, clickedCellIndex){
-	// TO-DO
-	console.log(clickedCellIndex)
+	// Update internal game state
+	gameState[clickedCellIndex] = currentPlayer;
+	clickedCell.innerHTML = currentPlayer;
 }
 
 function handlePlayerChange(){
 	// TO-DO
 }
+
+const winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
 
 function handleResultValidation(){
 	// TO-DO
