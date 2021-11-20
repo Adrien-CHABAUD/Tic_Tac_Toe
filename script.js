@@ -26,7 +26,8 @@ function handleCellPlayed(clickedCell, clickedCellIndex){
 }
 
 function handlePlayerChange(){
-	// TO-DO
+	currentPlayer = currentPlayer === "X" ? "O" : "X";
+	statusDisplay.innerHTML = currentPlayerTurn();
 }
 
 const winningConditions = [
@@ -95,8 +96,12 @@ function handleCellClick(clickedCellEvent){
 }
 
 function handleRestartGame(){
-	// TO-DO
-	console.log("Restart clicked")
+	gameActive = true;
+	currentPlayer = "X";
+	gameState = ["", "", "", "", "", "", "", "", ""];
+	statusDisplay.innerHTML = currentPlayerTurn();
+	document.querySelectorAll('.cell')
+			.forEach(cell => cell.innerHTML = "");
 }
 
 // Add event listeners
